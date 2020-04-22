@@ -6,11 +6,10 @@ RUN apt install -y sudo cmake automake perl gcc git libicu-dev libboost-all-dev 
 
 RUN git clone https://github.com/htcondor/htcondor.git -b V8_8_7-branch
 
-# Skip this if building from CLION.
-# If running from CLION, open CMake project of htcondor, and add the following to CMAKE options:
-# -DUW_BUILD:BOOL=TRUE -D_VERBOSE:BOOL=TRUE -DBUILDID:STRING=UW_development -DCMAKE_INSTALL_PREFIX:PATH=$HOME/release_dir -DCLIPPED:BOOL=ON
 # RUN cmake, build project and cmake install
-RUN cd /htcondor && ./configure_uw -DCLIPPED:BOOL=true -DCMAKE_BUILD_TYPE=Debug && make && make install
+RUN cd /htcondor && ./configure_uw -DCLIPPED:BOOL=true -DWITH_CREAM:BOOL=FALSE -DWITH_GLOBUS:BOOL=FALSE -DWITH_BLAHP:BOOL=FALSE -DWITH_BOINC:BOOL=FALSE -DWITH_VOMS:BOOL=FALSE -DWANT_GLEXEC:BOOL=FLASE && make && make install
+# If you want to build from CLION, configure CMake options with the above flags, and replace ./configure_uw with:
+#-DUW_BUILD:BOOL=TRUE -D_VERBOSE:BOOL=TRUE -DBUILDID:STRING=UW_development -DCMAKE_INSTALL_PREFIX:PATH=$PWD/release_dir
 
 # Some condor configuration pre installation (user and local dir)
 RUN adduser condor && echo "condor:condor" | chpasswd && adduser condor sudo
