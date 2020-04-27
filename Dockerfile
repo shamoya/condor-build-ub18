@@ -20,4 +20,5 @@ RUN /htcondor/release_dir/condor_configure --install=/htcondor/release_dir --pre
 
 # Some final configuration after installation
 RUN cp -a /usr/etc/condor /etc/condor && cp /usr/etc/condor_config /etc/condor/ && cp /usr/etc/bash_completion.d/condor /etc/bash_completion.d/
-ENTRYPOINT ["/usr/sbin/condor_master", "-f"]
+COPY boots.sh /
+ENTRYPOINT ["/boots.sh"]
