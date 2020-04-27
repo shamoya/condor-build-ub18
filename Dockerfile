@@ -4,7 +4,7 @@ RUN apt update && apt upgrade -y
 
 RUN apt install -y sudo cmake automake perl gcc git libicu-dev libboost-all-dev libpcre3-dev libkeyutils-dev libkrb5-dev libssl-dev uuid-dev libxml2-dev libpam-dev zlibc libltdl-dev libtool byacc libcurl3-dev libarchive-tar-perl libexpat-dev python-dev bison flex libnss3-dev libc-ares-dev libldap-dev sqlite3 libsqlite3-dev kmod
 
-RUN git clone https://github.com/htcondor/htcondor.git -b V8_8_7-branch
+RUN git clone https://github.com/htcondor/htcondor.git -b stable
 
 # RUN cmake, build project and cmake install
 RUN cd /htcondor && ./configure_uw -DCLIPPED:BOOL=true -DWITH_CREAM:BOOL=FALSE -DWITH_GLOBUS:BOOL=FALSE -DWITH_BLAHP:BOOL=FALSE -DWITH_BOINC:BOOL=FALSE -DWITH_VOMS:BOOL=FALSE -DWANT_GLEXEC:BOOL=FLASE && make && make install
