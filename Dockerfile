@@ -19,5 +19,5 @@ RUN mkdir /var/condor && chown -R condor:condor /var/condor
 RUN /htcondor/release_dir/condor_configure --install=/htcondor/release_dir --prefix=/usr --local-dir=/var/condor --owner=condor --make-personal-condor --no-env-scripts
 
 # Some final configuration after installation
-RUN cp -a /usr/etc/condor /etc/condor && cp /usr/etc/condor_config /etc/condor/ && cp /usr/etc/bash_completion.d/condor /etc/bash_completion.d/ && cp /usr/etc/init.d/condor /etc/init.d/
-ENTRYPOINT ["/etc/init.d/condor", "start"]
+RUN cp -a /usr/etc/condor /etc/condor && cp /usr/etc/condor_config /etc/condor/ && cp /usr/etc/bash_completion.d/condor /etc/bash_completion.d/
+ENTRYPOINT ["/usr/sbin/condor_master", "-f"]
