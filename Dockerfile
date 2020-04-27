@@ -15,8 +15,8 @@ RUN cd /htcondor && ./configure_uw -DCLIPPED:BOOL=true -DWITH_CREAM:BOOL=FALSE -
 RUN adduser condor && echo "condor:condor" | chpasswd && adduser condor sudo
 RUN mkdir /var/condor && chown -R condor:condor /var/condor
 
-# All build files after make install / CMake install are in release_dir (just like if u download tarball from htcondor site) - need to run the configure script
-RUN /htcondor/release_dir/condor_configure --install=/htcondor/release_dir --prefix=/usr --local-dir=/var/condor --type=manager,submit,execute --owner=condor --make-personal-condor --no-env-scripts
+# All build files after make install will be in release_dir, now need to run the configure script
+RUN /htcondor/release_dir/condor_configure --install=/htcondor/release_dir --prefix=/usr --local-dir=/var/condor --owner=condor --make-personal-condor --no-env-scripts
 
 # Some final configuration after installation
 RUN cp -a /usr/etc/condor /etc/condor && cp /usr/etc/condor_config /etc/condor/ && cp /usr/etc/bash_completion.d/condor /etc/bash_completion.d/ && cp /usr/etc/init.d/condor /etc/init.d/
