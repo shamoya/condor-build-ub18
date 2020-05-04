@@ -20,5 +20,7 @@ RUN /htcondor/release_dir/condor_configure --install=/htcondor/release_dir --pre
 
 # Some final configuration after installation
 RUN cp -a /usr/etc/condor /etc/condor && cp /usr/etc/condor_config /etc/condor/ && cp /usr/etc/bash_completion.d/condor /etc/bash_completion.d/
+RUN echo 'COLLECTOR_HOST=$(CONDOR_HOST):7077' >> /etc/condor/condor_config
+EXPOSE 7077
 COPY boots.sh /
 ENTRYPOINT ["/boots.sh"]
