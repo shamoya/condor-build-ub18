@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 RUN apt update && apt upgrade -y
 
-RUN apt install -y sudo cmake automake perl gcc git libicu-dev libboost-all-dev libpcre3-dev libkeyutils-dev libkrb5-dev libssl-dev uuid-dev libxml2-dev libpam-dev zlibc libltdl-dev libtool byacc libcurl3-dev libarchive-tar-perl libexpat-dev python-dev bison flex libnss3-dev libc-ares-dev libldap-dev sqlite3 libsqlite3-dev kmod python-setuptools python3-setuptools
+RUN apt install -y sudo cmake automake perl gcc git libicu-dev libboost-all-dev libpcre3-dev libkeyutils-dev libkrb5-dev libssl-dev uuid-dev libxml2-dev libpam-dev zlibc libltdl-dev libtool byacc libcurl3-dev libarchive-tar-perl libexpat-dev python-dev bison flex libnss3-dev libc-ares-dev libldap-dev sqlite3 libsqlite3-dev kmod
 
 RUN git clone https://github.com/htcondor/htcondor.git -b stable
 
