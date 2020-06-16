@@ -1,0 +1,14 @@
+version: '2'
+services:
+    condor-master:
+        build:
+          dockerfile: condor-master.dockerfile
+          context: .
+    condor-executer:
+        build:
+          dockerfile: condor-executer.dockerfile
+          context: .
+    condor-submitter:
+        build:
+          dockerfile: condor-submitter.dockerfile
+          context: .
