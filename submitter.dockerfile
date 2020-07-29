@@ -11,11 +11,11 @@ RUN echo "CONDOR_HOST = manager" >> /etc/condor/condor_config
 RUN echo "ALLOW_READ = *" >> /etc/condor/condor_config
 RUN echo "ALLOW_WRITE = *" >> /etc/condor/condor_config
 RUN echo "USE_PROCD = false" >> /etc/condor/condor_config
-RUN adduser idosh && echo "idosh:idosh" | chpasswd && adduser idosh sudo
-RUN mkdir /home/idosh/test
-COPY sh_loop.sh /home/idosh/test/
-COPY sh_loop.cmd /home/idosh/test/
-RUN chown -R idosh:idosh /home/idosh/test
+RUN adduser test && echo "test:test" | chpasswd && adduser test sudo
+RUN mkdir /home/test/job
+COPY sh_loop.sh /home/test/job/
+COPY sh_loop.cmd /home/test/job/
+RUN chown -R test:test /home/test/job/
 
 COPY boots.sh /
 ENTRYPOINT ["/boots.sh"]
