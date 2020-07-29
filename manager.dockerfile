@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-RUN apt update && apt upgrade -y && apt install -y sudo wget gnupg
+RUN apt update && apt upgrade -y && apt install -y sudo wget gnupg vim
 RUN wget -qO - https://research.cs.wisc.edu/htcondor/ubuntu/HTCondor-Release.gpg.key | sudo apt-key add -
 RUN echo "deb http://research.cs.wisc.edu/htcondor/ubuntu/8.8/bionic bionic contrib" >> /etc/apt/sources.list
 RUN echo "deb-src http://research.cs.wisc.edu/htcondor/ubuntu/8.8/bionic bionic contrib" >> /etc/apt/sources.list
@@ -14,7 +14,6 @@ RUN echo "CONDOR_HOST = 127.0.0.1" >> /etc/condor/condor_config
 RUN echo "NEGOTIATOR_DEBUG = D_FULLDEBUG,D_MATCH,D_ACCOUNTANT" >> /etc/condor/condor_config
 RUN echo "PREEMPTION_REQUIREMENTS = True" >> /etc/condor/condor_config
 RUN echo "ALLOW_PSLOT_PREEMPTION = True" >> /etc/condor/condor_config 
-RUN apt install -y vim
 
 COPY boots.sh /
 ENTRYPOINT ["/boots.sh"]
