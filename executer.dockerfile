@@ -6,17 +6,14 @@ RUN echo "deb http://research.cs.wisc.edu/htcondor/ubuntu/8.6/bionic bionic cont
 RUN echo "deb-src http://research.cs.wisc.edu/htcondor/ubuntu/8.6/bionic bionic contrib" >> /etc/apt/sources.list
 RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install -yq condor
-RUN echo "DAEMON_LIST = MASTER, SCHEDD" >> /etc/condor/condor_config
-RUN echo "CONDOR_HOST = condor-master" >> /etc/condor/condor_config
+RUN echo "DAEMON_LIST = MASTER, STARTD" >> /etc/condor/condor_config
+RUN echo "CONDOR_HOST = manager" >> /etc/condor/condor_config
 RUN echo "ALLOW_READ = *" >> /etc/condor/condor_config
 RUN echo "ALLOW_WRITE = *" >> /etc/condor/condor_config
+RUN echo "NUM_SLOTS = 1" >> /etc/condor/condor_config
+RUN echo "NUM_SLOTS_TYPE_1 = 1" >> /etc/condor/condor_config
+RUN echo "SLOT_TYPE_1_PARTITIONABLE = True" >> /etc/condor/condor_config
 RUN echo "USE_PROCD = false" >> /etc/condor/condor_config
-RUN apt install -y vim
-RUN adduser idosh && echo "idosh:idosh" | chpasswd && adduser idosh sudo
-RUN mkdir /home/idosh/test
-COPY sh_loop.sh /home/idosh/test/
-COPY sh_loop.cmd /home/idosh/test/
-RUN chown -R idosh:idosh /home/idosh/test
 
 COPY boots.sh /
 ENTRYPOINT ["/boots.sh"]
