@@ -1,4 +1,4 @@
-FROM shamoya/condor-build-ub18:base_stable
+FROM shamoya/condor-build-ub18:base_developement
 
 RUN echo "DAEMON_LIST = COLLECTOR, MASTER, NEGOTIATOR" >> /etc/condor/condor_config
 RUN echo "CONDOR_HOST = 127.0.0.1" >> /etc/condor/condor_config

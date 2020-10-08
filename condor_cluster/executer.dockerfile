@@ -1,4 +1,4 @@
-FROM shamoya/condor-build-ub18:base_stable
+FROM shamoya/condor-build-ub18:base_developement
 
 RUN echo "DAEMON_LIST = MASTER, STARTD" >> /etc/condor/condor_config
 RUN echo "CONDOR_HOST = manager" >> /etc/condor/condor_config

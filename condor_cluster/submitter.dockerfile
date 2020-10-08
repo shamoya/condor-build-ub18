@@ -1,4 +1,4 @@
-FROM shamoya/condor-build-ub18:base_stable
+FROM shamoya/condor-build-ub18:base_developement
 
 
 RUN echo "DAEMON_LIST = MASTER, SCHEDD" >> /etc/condor/condor_config
