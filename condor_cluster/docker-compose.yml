@@ -1,9 +1,5 @@
 version: '2'
 services:
-    common:
-        build:
-          dockerfile: common.dockerfile
-          context: .
     manager:
         build:
           dockerfile: manager.dockerfile
