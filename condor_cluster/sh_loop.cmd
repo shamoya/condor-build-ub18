@@ -13,5 +13,5 @@ accounting_group = A.a
 accounting_group_user = amit
 should_transfer_files   = IF_NEEDED
 when_to_transfer_output = ON_EXIT
-queue 30
+queue 300
 
